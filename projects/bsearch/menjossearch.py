@@ -139,24 +139,33 @@ mylist=[0,6,98,1,4,88,33,91,43,90,78]
  bsearch([0,6,98,1,4,88,33,91,43,90,78],0)
 # Selina Jones code ends
 
-#Oreoluwa Onatemowo's code starts
-def bsearch(blist,searchElement):       
-    blist.sort()
-    if blist == []:
+#Oreoluwa Onatemowo's code starts here
+def bsearch(searchlist,searchElement):       
+    searchlist.sort()
+    length = len(searchlist)
+    initial_index=0
+    final_index = len(searchlist)-1
+    midpoint = (initial_index + final_index)/2
+    if searchlist ==[]:
         return -1
-    else:
-        initial_index=0
-        final_index = len(blist)-1
-        while initial_index <= final_index:
-            midpoint = (initial_index + final_index)/2
-            if blist[midpoint] == searchElement:
-                return len(blist)/2
-            
-            elif blist[midpoint]  > searchElement:
-                final_index = midpoint+1
-            elif blist[midpoint] < searchElement:
-                initial_index = midpoint-1
-            elif searchElement in blist != True:
-                return -1
+    if searchlist[midpoint] == searchElement:
+        return midpoint
+        pass
+    while searchlist[midpoint]!=searchElement:
+        if searchlist[midpoint]  < searchElement:
+            initial_index = midpoint+1
+            midpoint = (initial_index+final_index)/2
+            length = midpoint - initial_index                  
+        elif searchlist[midpoint] > searchElement:            
+            final_index = midpoint-1
+            midpoint=(initial_index+final_index)/2 
+            length = midpoint - initial_index          
+        if searchlist[midpoint] == searchElement:                
+                return midpoint
+        if initial_index>final_index:
+                break    
+    return -1
+
 
 #Oreoluwa Onatemowo's code ends here
+
